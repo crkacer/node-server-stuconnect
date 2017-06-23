@@ -43,4 +43,23 @@ router.post('/', (req, res, next) => {
   }
 });
 
+router.put('/:id', isValidId, (req, res, next) => {
+  if(validStudent(req.body)) {
+    queries.update(req.params.id, req.body).then(stickers => {
+      res.json(stickers[0]);
+    });
+  } else {
+    next(new Error('Invalid student'));
+  }
+});
+
+router.delete('/:id', isValidId, (req, res) => {
+  queries.delete(req.params.id).then(() => {
+    res.json({
+      deleted: true
+    });
+  });
+});
+
+
 module.exports = router;

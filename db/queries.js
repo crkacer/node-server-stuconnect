@@ -9,5 +9,11 @@ module.exports = {
   },
   create(student) {
     return knex('student').insert(student, '*');
+  },
+  update(id, student) {
+    return knex('student').where('id', id).update(student, '*');
+  },
+  delete(id) {
+    return knex('student').where('id', id).del();
   }
 }
