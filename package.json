@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "test" : "(dropdb --if-exists test-student-connect && createdb test-student-connect) && NODE_ENV=test mocha"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
